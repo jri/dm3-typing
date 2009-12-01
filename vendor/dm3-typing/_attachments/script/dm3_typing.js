@@ -12,7 +12,7 @@ function dm3_typing() {
 
     this.search = function(searchmode) {
         if (searchmode == "By Type") {
-            // 1) perform time search
+            // 1) perform type search
             var type = ui.menu_item("search_type_select").label
             var result = db.view("deepamehta3/by_type", {key: type})
             // 2) create result topic
