@@ -14,7 +14,7 @@ function dm3_typing() {
         if (searchmode == "By Type") {
             // 1) perform type search
             var type = ui.menu_item("search_type_select").label
-            var result = db.view("deepamehta3/by_type", {key: type})
+            var result = get_topics_by_type(type)
             // 2) create result topic
             return create_result_topic(type, result, "SearchResult", function(row) {
                 return {
