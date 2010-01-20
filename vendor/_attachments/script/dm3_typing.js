@@ -1,5 +1,25 @@
 function dm3_typing() {
 
+    doctype_implementation("vendor/dm3-typing/script/topictype_document.js")
+
+    // IMPORTANT: if you make changes on the Topic Type declaration, you
+    // must change deepamehta3.js accordingly (method "type_template").
+    add_topic_type("Topic Type", {
+        fields: [
+            {id: "type-id", model: {type: "text"}, view: {editor: "single line", label: "Type ID"}, content: ""}
+        ],
+        view: {},
+        implementation: "TopictypeDocument"
+    })
+
+
+
+    /**************************************************************************************************/
+    /**************************************** Overriding Hooks ****************************************/
+    /**************************************************************************************************/
+
+
+
     this.init = function() {
         $("#searchmode_select").append($("<option>").text("By Type"))
     }
