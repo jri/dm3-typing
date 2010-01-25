@@ -16,7 +16,7 @@ function dm3_typing() {
 
     this.search_widget = function(searchmode) {
         if (searchmode == "By Type") {
-            return create_type_menu("search_type_select")
+            return create_type_menu("search_type_select").dom
         }
     }
 
