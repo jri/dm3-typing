@@ -3,7 +3,6 @@ DeepaMehta 3 Typing Plugin
 ==========================
 
 Adds a "By Type" search mode.  
-More to come.
 
 
 Requirements
@@ -46,4 +45,4 @@ Version History
 
 ------------
 Jörg Richter  
-Dec 1, 2009
+Jan 26, 2010

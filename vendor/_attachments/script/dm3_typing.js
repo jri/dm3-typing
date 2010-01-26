@@ -8,7 +8,7 @@ function dm3_typing() {
 
 
 
-    /*** Provide "By Type" search mode ***/
+    /********** Provide "By Type" search mode **********/
 
     this.init = function() {
         $("#searchmode_select").append($("<option>").text("By Type"))
@@ -16,14 +16,14 @@ function dm3_typing() {
 
     this.search_widget = function(searchmode) {
         if (searchmode == "By Type") {
-            return create_type_menu("search_type_select").dom
+            return create_type_menu("search-type-menu").dom
         }
     }
 
     this.search = function(searchmode) {
         if (searchmode == "By Type") {
             // 1) perform type search
-            var type = ui.menu_item("search_type_select").label
+            var type = ui.menu_item("search-type-menu").label
             var result = get_topics_by_type(type)
             // 2) create result topic
             return create_result_topic(type, result, "SearchResult", function(row) {
@@ -33,6 +33,20 @@ function dm3_typing() {
                     label: row.value
                 }
             })
+        }
+    }
+
+    /**********  Working together with the DM3 Type Editor plugin **********/
+
+    /**
+     * Once a "Topic Type" topic is updated we must rebuild our type menu.
+     */
+    this.post_update = function(doc) {
+        if (doc.type == "Topic" && doc.topic_type == "Topic Type") {
+            // Rebuilding the type menu is only required if the "By Type" searchmode is active.
+            if (ui.menu_item("searchmode_select").label == "By Type") {
+                rebuild_type_menu("search-type-menu")
+            }
         }
     }
 }
