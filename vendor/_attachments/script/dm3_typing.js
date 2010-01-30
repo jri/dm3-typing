@@ -43,10 +43,28 @@ function dm3_typing() {
      */
     this.post_update = function(doc) {
         if (doc.type == "Topic" && doc.topic_type == "Topic Type") {
-            // Rebuilding the type menu is only required if the "By Type" searchmode is active.
-            if (ui.menu_item("searchmode_select").label == "By Type") {
-                rebuild_type_menu("search-type-menu")
-            }
+            update_type_menu()
+        }
+    }
+
+    this.post_delete = function(doc) {
+        if (doc.type == "Topic" && doc.topic_type == "Topic Type") {
+            update_type_menu()
+        }
+    }
+
+
+
+    /************************************************************************************************/
+    /**************************************** Custom Methods ****************************************/
+    /************************************************************************************************/
+
+
+
+    function update_type_menu() {
+        // Rebuilding the type menu is only required if the "By Type" searchmode is active.
+        if (ui.menu_item("searchmode_select").label == "By Type") {
+            rebuild_type_menu("search-type-menu")
         }
     }
 }
