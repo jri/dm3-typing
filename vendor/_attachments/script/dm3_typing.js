@@ -26,13 +26,7 @@ function dm3_typing() {
             var type = ui.menu_item("search-type-menu").label
             var result = get_topics_by_type(type)
             // 2) create result topic
-            return create_result_topic(type, result, "SearchResult", function(row) {
-                return {
-                    id:    row.id,
-                    type:  row.key,
-                    label: row.value
-                }
-            })
+            return create_result_topic(type, result, "SearchResult")
         }
     }
 
